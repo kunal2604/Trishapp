@@ -12,13 +12,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "trisha",
+      "trishapp",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "trisha",
+      "trishapp",
       "kebab-case"
     ],
     "import-blacklist": [
