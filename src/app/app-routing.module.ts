@@ -10,7 +10,8 @@ const routes: Routes = [
   },
   {
   path: 'products',
-  loadChildren: './products/products.module#ProductsModule'   //loadChildren: () => ProductsModule,
+  loadChildren: './products/products.module#ProductsModule' // We use string way for lazy loading, so that it's not compiled
+  //loadChildren: () => ProductsModule,
   }
 ];
 
