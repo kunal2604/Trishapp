@@ -10,8 +10,8 @@ const routes: Routes = [
   },
   {
   path: 'products',
-  loadChildren: './products/products.module#ProductsModule' // We use string way for lazy loading, so that it's not compiled
-  //loadChildren: () => ProductsModule,
+  loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+  //loadChildren: './products/products.module#ProductsModule'  DEPRECATED in updated 'ng'
   }
 ];
 
