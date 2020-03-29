@@ -1,4 +1,4 @@
-<mat-card class="login-card">
+<mat-card class="login-card" color="primary">
     <mat-card-header>
         <mat-card-title>Login</mat-card-title>
     </mat-card-header>
@@ -27,5 +27,9 @@
 
     <mat-card-actions>
         <button mat-raised-button (click)="login()" color="primary">Login</button>
+        <span>
+            Don't have an account? <a [routerLink]="['/register']">Register</a> here!  <!-- ABSOLUTE routing-->
+            <!-- <a routerLink="['/register']">  RELATIVE routing -> '/login/register' -->
+        </span>
     </mat-card-actions>
 </mat-card>
