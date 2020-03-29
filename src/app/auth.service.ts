@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
 import { of, Subject } from 'rxjs';
-import { User } from './models/User';
+import { RegisterUser } from './models/RegisterUser';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private user$ = new Subject<User>();
+  private user$ = new Subject<RegisterUser>();
   constructor() { }
 
-  login(email:string, password: string) {
-    let loginCredentials = {email, password};
-    console.log(loginCredentials);
-    return of(loginCredentials);
+  // loginOld(email: string, password: string) {
+  //   let loginCredentials = { email, password };
+  //   console.log(loginCredentials);
+  //   return of(loginCredentials);
+  // }
+  login(email: string, password: string) {
+    let loginUser: RegisterUser = {
+      email: email,
+      fullName: email,
+      password: password,
+      repeatPassword: password
+    }
+    this.user$.next(loginUser);
+    return of(loginUser);
   }
 
   logout() {
@@ -29,7 +39,7 @@ export class AuthService {
     this.user$.next(user);
   }
 
-  register(user: any){
+  register(user: RegisterUser) {
     // make api call to save user in DB
     //update the user subject
     this.user$.next(user);
