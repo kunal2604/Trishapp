@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -14,9 +15,13 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-  path: 'products',
-  loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
-  //loadChildren: './products/products.module#ProductsModule'  DEPRECATED in updated 'ng'
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+    //loadChildren: './products/products.module#ProductsModule'  DEPRECATED in updated 'ng'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
