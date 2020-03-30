@@ -1,8 +1,16 @@
 .product-card {
     max-width: 400px;
     margin: 15px;    
+    background-color: #91c8f0;
   }
   
 .product-header-image {
     background-size: cover;
+}
+
+.product-name-price-text {
+  color: #27223b;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+  text-align: center;
 }

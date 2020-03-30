@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnDestroy{
   user: RegisterUser;
   userSubscription: Subscription;
-   
+
   constructor(
     private authService: AuthService,
     private router: Router

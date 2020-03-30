@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Subject } from 'rxjs';
+import { of, Subject, Observable } from 'rxjs';
 import { RegisterUser } from './models/RegisterUser';
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { RegisterUser } from './models/RegisterUser';
 export class AuthService {
 
   private user$ = new Subject<RegisterUser>();
+  
   constructor() { }
 
   // loginOld(email: string, password: string) {
@@ -26,7 +27,7 @@ export class AuthService {
   }
 
   logout() {
-    // cleanup subject; remove suer from subject
+    // cleanup subject; remove user from subject
     this.setUser(null);
     console.log('user has logged out successfully');
   }

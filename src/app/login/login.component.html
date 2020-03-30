@@ -28,8 +28,8 @@
     <mat-card-actions>
         <button mat-raised-button (click)="login()" color="primary">Login</button>
         <span>
-            Don't have an account? <a [routerLink]="['/register']">Register</a> here!  <!-- ABSOLUTE routing-->
-            <!-- <a routerLink="['/register']">  RELATIVE routing -> '/login/register' -->
+            Don't have an account? <a [routerLink]="['/register']">Register</a> here! <!-- ABSOLUTE routing -> 'domain/register' -->
+            <!-- <a routerLink="['/register']">  RELATIVE routing -> 'domain/login/register' -->
         </span>
     </mat-card-actions>
 </mat-card>
