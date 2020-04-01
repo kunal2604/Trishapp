@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { RegisterUser } from './models/RegisterUser';
+import { User } from './models/User';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy{
-  user: RegisterUser;
+  user: User;
   userSubscription: Subscription;
 
   constructor(
