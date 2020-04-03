@@ -12,20 +12,10 @@ export class AuthService {
   private apiURL = '/api/auth/';
   constructor(private httpClient: HttpClient) { }
 
-  // loginOld(email: string, password: string) {
-  //   let loginCredentials = { email, password };
-  //   console.log(loginCredentials);
-  //   return of(loginCredentials);
-  // }
   login(email: string, password: string) {
-    let loginUser: User = {
-      email: email,
-      fullName: email,
-      password: password,
-      repeatPassword: password
-    }
-    this.user$.next(loginUser);
-    return of(loginUser);
+    let loginCredentials = { email, password };
+    console.log(loginCredentials);
+    return of(loginCredentials);
   }
 
   logout() {

@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
   }
   get password() {
     return this.userForm.get('password');
-  }
+  } 
   get repeatPassword() {
     return this.userForm.get('repeatPassword');
   }
