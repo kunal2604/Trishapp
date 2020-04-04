@@ -1,19 +1,23 @@
-<mat-card class="product-card" *ngFor="let product of (products | async)">
-    <mat-card-header>
-        <div mat-card-avatar class="product-header-image">
+<mat-grid-list cols="5" rowHeight="600px">
+    <mat-grid-tile *ngFor="let product of (products | async)">
+        <mat-card class="product-card">
+        <!-- <mat-card> -->
+            <!-- <mat-card-header>
+                <div mat-card-avatar class="product-header-image">
+                    <img mat-card-image src="{{ product.imgUrl }}" alt="{{ product.name }}" />
+                </div>
+                <mat-card-title>{{ product.name }}</mat-card-title>
+            </mat-card-header> -->
             <img mat-card-image src="{{ product.imgUrl }}" alt="{{ product.name }}" />
-        </div>
-        <mat-card-title>{{ product.name }}</mat-card-title>
-        <!-- <mat-card-subtitle>{{ product.name }}</mat-card-subtitle> -->
-    </mat-card-header>
-    <img mat-card-image src="{{ product.imgUrl }}" alt="{{ product.name }}" />
-    <mat-card-content class="product-name-price-text">
-        <p>
-            {{ product.name }} : {{ product.price }}
-        </p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-    </mat-card-actions>
-</mat-card>
+            <mat-card-content class="product-name-price-text">
+                <p>
+                    {{ product.name }} : {{ product.price }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
