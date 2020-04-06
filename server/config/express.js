@@ -5,8 +5,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const routes = require('../routes');    
-
 const passport = require('../middleware/passport');
+
 // get app
 const app = express();
 

@@ -11,7 +11,7 @@ const localLogin = new LocalStrategy(
         usernameField: 'email'
     },
     async(email, password, done) => {
-        const user = userController.getUserByEmailAndPassword(email, password);
+    const user = await userController.getUserByEmailAndPassword(email, password);
         return user 
         ? done(null, user)
         : done(null, false, {
@@ -25,13 +25,13 @@ const jwtLogin = new JwtStrategy(
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
         secretOrKey: config.jwtSecret
     },
-    async (payload, done) => {
-        const user = userController.getUserById(payload._id);
+    async(payload, done) => {
+        const user = await userController.getUserById(payload._id);
         return user
         ? done(null, user)
         : done(null, false, {
             error: 'Your login details are invalid or expired.'
-        })
+        });
     }
 );
 

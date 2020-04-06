@@ -5,5 +5,5 @@ function generateToken(user) {
     const payload = JSON.stringify(user);
     return jwt.sign(payload, config.jwtSecret);
 }
-
+ 
 module.exports = { generateToken };
