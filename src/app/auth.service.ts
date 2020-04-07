@@ -4,6 +4,7 @@ import { switchMap, catchError } from 'rxjs/operators';
 import { User } from './models/User';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
+import { LogService } from './core/log.service';
 
 interface UserDto {
   user: User;
@@ -18,7 +19,8 @@ export class AuthService {
   private apiURL = '/api/auth/';
   constructor(
     private httpClient: HttpClient,
-    private tokenStorage: TokenStorageService  
+    private tokenStorage: TokenStorageService,
+    private logService: LogService
   ) { }
 
   login(email: string, password: string) {
@@ -26,14 +28,14 @@ export class AuthService {
     console.log(loginCredentials);
     return this.httpClient.post<UserDto>(`${this.apiURL}login`, loginCredentials)
       .pipe(
-        switchMap(({user, token}) => {
+        switchMap(({ user, token }) => {
           this.setUser(user);
           console.log('User found ', user);
           this.tokenStorage.setToken(token);
           return of(user);
         }),
         catchError(err => {
-          console.log(`Your login details couldn't be verified.`, err)
+          this.logService.log(`Server error occured: ${err.error.message}`, err);
           return throwError(`Your login details couldn't be verified.`);
         })
       );
@@ -57,23 +59,23 @@ export class AuthService {
 
   register(userToSave: any) {
     return this.httpClient.post<any>(`${this.apiURL}register`, userToSave).pipe
-    (
-      switchMap(({user, token}) => {
-        this.setUser(user);
-        this.tokenStorage.setToken(token);
-        console.log('User registed UI side call', user);
-        return of(user);
-      }),
-      catchError(err => {
-        console.log('Server error occured ', err);
-        return throwError('Registration failed. Please contact the administrator.') 
-      })
-    );
+      (
+        switchMap(({ user, token }) => {
+          this.setUser(user);
+          this.tokenStorage.setToken(token);
+          console.log('User registed UI side call', user);
+          return of(user);
+        }),
+        catchError(err => {
+          console.log('Server error occured ', err);
+          return throwError('Registration failed. Please contact the administrator.')
+        })
+      );
   }
 
   findme() {
     const token = this.tokenStorage.getToken();
-    if(!token) {
+    if (!token) {
       return EMPTY;
     }
     return this.httpClient.get<any>(`${this.apiURL}findme`).pipe(
