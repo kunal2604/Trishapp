@@ -5,7 +5,7 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ProductsDataService } from './products-data.service';
 import { HttpClientModule } from '@angular/common/http';
-import { TrishappMaterialModule } from '../angular-material-module';
+import { TrishappMaterialModule } from '../shared/angular-material-module';
 
 
 @NgModule({
