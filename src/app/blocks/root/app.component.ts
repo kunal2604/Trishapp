@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
-import { User } from './models/User';
+import { User } from '../../models/User';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,8 +14,7 @@ export class AppComponent implements OnDestroy{
   userSubscription: Subscription;
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {
     this.authService.findme().subscribe(user => {
       this.user = user;
@@ -23,11 +22,6 @@ export class AppComponent implements OnDestroy{
     this.userSubscription = this.authService.user.subscribe(user => {
       this.user = user;
     });
-  }
-
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {
