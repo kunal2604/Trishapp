@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products/products.component';
-import { ProductsDataService } from './products-data.service';
+import { ProductsDataService } from '../core/products/products-data.service';
 import { HttpClientModule } from '@angular/common/http';
-import { TrishappMaterialModule } from '../shared/angular-material-module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { TrishappMaterialModule } from '../shared/angular-material-module';
     CommonModule,
     ProductsRoutingModule,
     HttpClientModule,
-    TrishappMaterialModule
+    SharedModule
   ],
   providers: [ProductsDataService]
 })
