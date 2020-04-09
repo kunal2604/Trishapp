@@ -8,6 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { BlocksModule } from './blocks/blocks.module';
 import { CoreModule } from '@angular/flex-layout';
+import { AuthHeaderInterceptorService } from '@core/interceptors/auth-header-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,13 @@ import { CoreModule } from '@angular/flex-layout';
     BlocksModule,
     CoreModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHeaderInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
